@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+
+{% block main_page %}
+
+<div class="wrapper">
+    <div class="empty_block"></div>
+    <div class="info">
+        <div class="description">
+             <p class="names">Gossip U-Tad</p>
+            <div class="desc">
+                <ul class="checkmark">
+                    <li><a href="{{ url_for('main.first_rule') }}">First rule</a></li>
+                    <li><a href="{{ url_for('main.second_rule') }}">Second rule</a></li>
+                    <li><a href="{{ url_for('main.third_rule') }}">Third rule</a></li>
+                    <li><a href="{{ url_for('main.fourth_rule') }}">Fourth rule</a></li>
+                    <li><a href="{{ url_for('main.fifth_rule') }}">Fifth rule</a></li>
+                    <li><a href="{{ url_for('main.sixth_rule') }}">Sixth rule</a></li>
+                </ul>
+            </div>
+        </div>   
+    </div>
+
+</div>
+
+{% endblock main_page %}

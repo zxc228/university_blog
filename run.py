@@ -1,11 +1,7 @@
-from flask import Flask, render_template
+from blog import app
+from blog.main.routes import main
 
-app = Flask(__name__)
 
-
-@app.route('/')
-def home():
-    return render_template('index.html', title='Main')
-
+app.register_blueprint(main)
 if __name__ == '__main__':
-    app.run(debug=True, port=3228)
+    app.run(debug=True)
