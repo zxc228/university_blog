@@ -16,7 +16,18 @@
         <div class="wrapper">
 
         {% block menu %}
+            <header class="header">
+                <ul class="main_menu">
+                    <li><a href="#"><p>Main</p></a></li>
+                    <li><a href="#"><p>Blog</p></a></li>
+                    <li><a href="#"><p>Registration</p></a></li>
+                    <li><a href="#"><p>Login</p></a></li>
+                    <li><a href="#"><p>Account</p></a></li>
+                    <li><a href="#"><p>Create post</p></a></li>
+                    <li><a href="#"><p>Logout</p></a></li>
+                </ul>
 
+            </header>
         {% endblock menu %}
 
         {% block content %}
@@ -26,11 +37,16 @@
 
         {% block main_page %}
         
+        <div class="content">
+
+        </div>
         {% endblock main_page %}
 
 
         {% block footer %}
-        
+        <footer class="footer"> All rights reserved!<br>
+            &#169; zxc228 2024
+        </footer>
         {% endblock footer %}
         </div>
     </body>
