@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<h1>User's account {{ current_user.username }}</h1>
+
+{% if current_user.is_authenticated %}
+
+<p>{{ current_user.username }}</p>
+
+<p>{{ current_user.email }}</p>
+
+<p>{{ current_user.password }}</p>
+
+{% endif %}
+
+{% endblock content %}

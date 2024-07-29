@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
         {% block title %}
             {% if title %}
@@ -20,22 +20,46 @@
                 <div class="logo">
                     <img src="{{ url_for('static', filename='img/logo.svg') }}" alt="logo">
                 </div>
-                <ul class="main_menu">
-                    <li><a href="#"><p>Main</p></a></li>
+                <ul class="menu">
+
+                    {% if current_user.is_authenticated %}
+                    <li><a href="{{ url_for('main.index') }}"><p>Main</p></a></li>
                     <li><a href="#"><p>Blog</p></a></li>
+                    <li><a href="{{ url_for('main.account') }}"><p>Account</p></a></li>
+                    <li><a href="{{ url_for('main.logout') }}"><p>Logout</p></a></li>
+                    {% else %}
+                    <li><a href="{{ url_for('main.index') }}"><p>Main</p></a></li>
                     <li><a href="#"><p>Registration</p></a></li>
-                    <li><a href="#"><p>Login</p></a></li>
-                    <li><a href="#"><p>Account</p></a></li>
-                    <li><a href="#"><p>Create post</p></a></li>
-                    <li><a href="#"><p>Logout</p></a></li>
+                    <li><a href="{{ url_for('main.login') }}"><p>Login</p></a></li>
+                    {% endif %}
+                    
                 </ul>
 
             </header>
         {% endblock menu %}
 
-        {% block content %}
 
-        {% endblock content %}
+
+        <div class="content">
+            <main role="main" class="#">
+                <div class="row">
+                    <div class="col-md-12">
+                        {% with messages = get_flashed_messages(with_categories=true) %}
+                            {% if messages %}
+                                {% for category, message in messages %}
+                                    <div class="alert alert-{{ category }}">
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+                    </div>
+                </div>
+                {% block content %}{% endblock content %}
+            </main>
+        </div>
+        
+        
 
 
         {% block main_page %}
