@@ -29,8 +29,8 @@
                     <li><a href="{{ url_for('main.logout') }}"><p>Logout</p></a></li>
                     {% else %}
                     <li><a href="{{ url_for('main.index') }}"><p>Main</p></a></li>
-                    <li><a href="#"><p>Registration</p></a></li>
-                    <li><a href="{{ url_for('main.login') }}"><p>Login</p></a></li>
+                    <li><a href="{{ url_for('users.register') }}"><p>Registration</p></a></li>
+                    <li><a href="{{ url_for('users.login') }}"><p>Login</p></a></li>
                     {% endif %}
                     
                 </ul>

@@ -9,31 +9,35 @@ main = Blueprint('main', __name__)
 def index():
     return render_template('index.html', title='Main')
 
-@main.route('/login', methods= ["GET", "POST"])
-def login():
-    form = LoginForm()
-    if form.validate_on_submit():
-        user = User.query.filter_by(email=form.email.data).first()
-        if user and user.check_password(form.password.data):
-            login_user(user, remember=form.remember.data)
-            next_page = request.args.get('next')
+@main.route('/blog')
+def blog():
+    return render_template('index.html', title='blog')
 
-            return redirect(next_page) if next_page else redirect(url_for('main.account'))
-        else:
-            flash("Unsuccessful authorization. Check your email or password", 'danger')
+# @main.route('/login', methods= ["GET", "POST"])
+# def login():
+#     form = LoginForm()
+#     if form.validate_on_submit():
+#         user = User.query.filter_by(email=form.email.data).first()
+#         if user and user.check_password(form.password.data):
+#             login_user(user, remember=form.remember.data)
+#             next_page = request.args.get('next')
 
-    return render_template("login.html", title='Authorization', legend='Login', form=form)
+#             return redirect(next_page) if next_page else redirect(url_for('main.account'))
+#         else:
+#             flash("Unsuccessful authorization. Check your email or password", 'danger')
 
-@main.route('/account')
-@login_required
-def account():
-    return render_template("account.html", title='Account', current_user=current_user)
+#     return render_template("login.html", title='Authorization', legend='Login', form=form)
 
-@main.route('/logout')
+# @main.route('/account')
+# @login_required
+# def account():
+#     return render_template("account.html", title='Account', current_user=current_user)
 
-def logout():
-    logout_user()
-    return redirect(url_for('main.index'))
+# @main.route('/logout')
+
+# def logout():
+#     logout_user()
+#     return redirect(url_for('main.index'))
 
 @main.route('/first_rule')
 def first_rule():

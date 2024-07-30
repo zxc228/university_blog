@@ -1,0 +1,74 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<div class="register_form">
+    <form action="" method="POST">
+
+        {{ form.hidden_tag() }}
+        <legend class="legend">{{ legend }}</legend>
+
+        {% if form.username.errors %}
+        {{ form.username(class='form-post-title is-invalid', placeholder='Username') }}
+        <div class="invalid-feedback">
+            {% for errors in form.username.errors %}
+            <span>{{ error }}</span>
+            {% endfor %}
+        </div>
+        {% else %}
+        {{ form.username(class='form-post-title', placeholder='Username') }}
+        {% endif %}
+
+        {% if form.email.errors %}
+        {{ form.email(class='form-post-title is-invalid', placeholder='Email') }}
+        <div class="invalid-feedback">
+            {% for errors in form.email.errors %}
+            <span>{{ error }}</span>
+            {% endfor %}
+        </div>
+        {% else %}
+        {{ form.email(class='form-post-title', placeholder='Email') }}
+        {% endif %}
+
+        {% if form.password.errors %}
+        {{ form.password(class='form-post-title is-invalid', placeholder='Password') }}
+        <div class="invalid-feedback">
+            {% for errors in form.password.errors %}
+            <span>{{ error }}</span>
+            {% endfor %}
+        </div>
+        {% else %}
+        {{ form.password(class='form-post-title', placeholder='Password') }}
+        {% endif %}
+
+        {% if form.confirm_password.errors %}
+        {{ form.confirm_password(class='form-post-title is-invalid', placeholder='Confirm password') }}
+        <div class="invalid-feedback">
+            {% for errors in form.confirm_password.errors %}
+            <span>{{ error }}</span>
+            {% endfor %}
+        </div>
+        {% else %}
+        {{ form.confirm_password(class='form-post-title', placeholder='Confirm password') }}
+        {% endif %}
+
+
+        <div class="form-group_button">
+           <div class="btn">
+                {{ form.submit(class='btn_sign_in') }}
+           </div>
+              <small class="text-muted">
+            Have account already? <a class='ml-2' href="{{ url_for('users.login')}}">Log in</a>
+        </small>
+        </div>
+
+    </form>
+    <div class="border-top">
+
+    </div>
+</div>
+
+
+</div>
+
+{% endblock content%}
